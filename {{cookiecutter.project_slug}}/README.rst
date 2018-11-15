@@ -3,9 +3,9 @@
 
 {{ cookiecutter.project_description }}
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
+.. image:: https://img.shields.io/badge/built%20with-cookiecutter%20falcon-brightgreen.svg
+     :target: https://github.com/next-miguelreguero/cookiecutter-falcon
+     :alt: Built with Cookiecutter Falcon
 
 {% if cookiecutter.open_source_license != "Not open source" %}
 LICENSE: {{ cookiecutter.open_source_license }}
@@ -24,15 +24,12 @@ To deploy the app locally (for testing/development), you will need to:
 #. Serve the application itself:
    .. code-block:: bash
         export FALCON_SETTINGS_MODULE={{cookiecutter.project_slug}}.settings.local
-        gunicorn {{ cookiecutter.project_slug }}.app:app --bind:127.0.0.1:8000 --reload
+        gunicorn {{ cookiecutter.project_slug }}.main:app --bind:127.0.0.1:8000 --reload
 
    Or
    
    .. code-block:: bash
-        export FALCON_SETTINGS_MODULE={{cookiecutter.project_slug}}.settings.local
-        python {{ cookiecutter.project_slug}}/app.py
-
-It is very important to set the environment before serving the app or it won't work.
+        python {{ cookiecutter.project_slug}}/main.py
 
 {% if cookiecutter.use_docker == "y" %}
 

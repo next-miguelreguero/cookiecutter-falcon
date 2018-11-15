@@ -6,18 +6,15 @@ App runner
 # Third-party imports
 import falcon
 
+
+
+if os.getenv("FALCON_SETTINGS_MODULE") is None:
+    os.environ["FALCON_SETTINGS_MODULE"] = "settings.local"
+
 # Local imports
-from {{ cookiecutter.project_slug }}.sample.models import SampleResource
+from {{ cookiecutter.project_slug }}.api.app import application
 
-
-# Create resources
-sample_resource = SampleResource()
-
-
-# Create falcon app
-app = falcon.API()
-app.add_route('/sample_resource', sample_resource)
-
+app = application
 
 # Useful for debugging problems in API, it works with pdb
 if __name__ == '__main__':
