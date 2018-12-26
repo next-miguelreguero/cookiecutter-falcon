@@ -10,7 +10,7 @@ if [ $1 = 'start' ]; then
             exit 1
         fi
         sleep $sleep_time
-        exec gunicorn {{cookiecutter.project_slug}}.app:app --bind 0.0.0.0:8000 --reload -R --env PYTHONUNBUFFERED=1 -k gevent
+        exec uwsgi --http-socket 0.0.0.0:8000 -w {{cookiecutter.project_slug}}.main
 
         if [ $? -eq 0 ]; then
             flag=1

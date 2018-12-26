@@ -2,20 +2,15 @@
 """
 Docker settings file
 """
+import os
 # Local imports
 # Third-party imports
-{% if cookiecutter.use_mongodb == "y" %}
-import pymongo
-{% endif %}{% if cookiecutter.use_redisdb == "y" %}
-from redis import StrictRedis
-{% endif %}
+from .base import *
 
-# Local imports
-from base import *
+DB = {"NAME": os.environ['DB_NAME'],
+      "USERNAME": os.environ['DB_USERNAME'],
+      "PASSWORD": os.environ['DB_PASSWORD'],
+      "HOSTNAME": os.environ['DB_HOST'],
+      "PORT": os.environ.get("DB_PORT", 5432)
+}
 
-
-{% if cookiecutter.use_mongodb == "y" %}
-MONGO_DB = pymongo.MongoClient('mongodb')
-{% endif %}{% if cookiecutter.use_redisdb == "y" %}
-REDIS_DB = StrictRedis('redisdb')
-{% endif %}

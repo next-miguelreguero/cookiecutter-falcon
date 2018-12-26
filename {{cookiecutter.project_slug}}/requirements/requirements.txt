@@ -1,3 +1,6 @@
-falcon==1.0.0
-gunicorn==19.6.0
+falcon==1.4.1
+msgpack>=0.6.0
+psycopg2
+uwsgi==2.0.17
 marshmallow==2.15.6
+peewee==3.7.1
